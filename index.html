@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO OPTIMIZATION START -->
+    <title>AnimGen: CSS Animation Generator Tool | Dippan Bhusal</title>
+    <meta name="description" content="A powerful, aesthetic tool for developers to instantly generate, customize, and copy production-ready CSS @keyframes animations. Built by Dippan Bhusal.">
+    <meta name="keywords" content="CSS, animation, generator, keyframes, tailwind css, web development, developer tool, utility, dippan bhusal">
+    <meta name="author" content="Dippan Bhusal">
+    <link rel="canonical" href="https://animgen.dippanbhusal.tech">
+    
+    <!-- Open Graph (Social Sharing) Tags -->
+    <meta property="og:title" content="AnimGen: CSS Animation Generator Tool">
+    <meta property="og:description" content="A aesthetic and production-ready tool to generate, preview, and copy beautiful CSS @keyframes animations with ease.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://animgen.dippanbhusal.tech">
+    <meta property="og:image" content="https://i.ibb.co/Kc5xfnWV/IMG-20251120-222029.jpg">
+    <meta property="og:site_name" content="DippanBhusal.tech">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dippan.bhusal"> 
+    <meta name="twitter:creator" content="@dippan.bhusal">
+    <meta name="twitter:title" content="AnimGen: CSS Animation Generator">
+    <meta name="twitter:description" content="Instantly generate, customize, and copy production-ready CSS animations for your projects.">
+    <meta name="twitter:image" content="https://i.ibb.co/Kc5xfnWV/IMG-20251120-222029.jpg">
+    <!-- SEO OPTIMIZATION END -->
+    
+    <!-- Google Fonts: Outfit (Aesthetic/Tech feel) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Code Syntax Highlighting Simulation */
+        .token-selector { color: #ec4899; } /* Pink */
+        .token-property { color: #0ea5e9; } /* Blue */
+        .token-value { color: #a855f7; } /* Purple */
+        .token-brace { color: #64748b; } 
+        .dark .token-selector { color: #f472b6; }
+        .dark .token-property { color: #38bdf8; }
+        .dark .token-value { color: #c084fc; }
+        .dark .token-brace { color: #94a3b8; }
+
+        /* Glassmorphism Effects */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Grid Pattern Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+        }
+        .dark .bg-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+        }
+        
+        /* Prevent layout shift */
+        body { overflow-x: hidden; }
+    </style>
+
+    <!-- SCHEMA STRUCTURED DATA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AnimGen: CSS Animation Generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://animgen.dippanbhusal.tech",
+      "description": "A powerful, aesthetic tool for developers to instantly generate, customize, and copy production-ready CSS @keyframes animations.",
+      "image": "https://i.ibb.co/Kc5xfnWV/IMG-20251120-222029.jpg",
+      "inLanguage": "en-US",
+      "author": {
+        "@type": "Person",
+        "name": "Dippan Bhusal",
+        "url": "https://DippanBhusal.tech"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "1"
+      }
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons-round text-brand-500 text-3xl">animation</span>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-tight">Anim<span class="text-brand-500">Gen</span></h1>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400">Developer Tool</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/KDippan" target="_blank" class="hidden md:flex items-center gap-1 text-sm font-medium hover:text-brand-500 transition">
+                        <span class="material-icons-round text-lg">code</span> GitHub
+                    </a>
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <span class="material-icons-round" id="themeIcon">light_mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
+            
+            <!-- Sidebar: Controls & Selection -->
+            <aside class="lg:col-span-3 space-y-6">
+                
+                <!-- Animation Selection -->
+                <div class="glass-panel rounded-2xl p-5 shadow-sm">
+                    <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4 flex items-center gap-2">
+                        <span class="material-icons-round text-base">category</span> Animation Type
+                    </h2>
+                    <div class="grid grid-cols-2 gap-2" id="animationList">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div class="glass-panel rounded-2xl p-5 shadow-sm space-y-5">
+                    <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                        <span class="material-icons-round text-base">tune</span> Configuration
+                    </h2>
+                    
+                    <!-- Duration -->
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <label class="text-sm font-medium">Duration</label>
+                            <span id="durationValue" class="text-xs font-mono bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">1.0s</span>
+                        </div>
+                        <input type="range" min="0.1" max="5" step="0.1" value="1" id="durationInput" 
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-brand-500">
+                    </div>
+
+                    <!-- Easing -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Easing</label>
+                        <div class="relative">
+                            <select id="easingInput" class="w-full bg-gray-100 dark:bg-gray-800 border-none rounded-lg py-2.5 px-3 text-sm focus:ring-2 focus:ring-brand-500 cursor-pointer appearance-none">
+                                <option value="ease">ease</option>
+                                <option value="linear">linear</option>
+                                <option value="ease-in">ease-in</option>
+                                <option value="ease-out">ease-out</option>
+                                <option value="ease-in-out">ease-in-out</option>
+                                <option value="cubic-bezier(0.68, -0.55, 0.27, 1.55)">bounce-custom</option>
+                            </select>
+                            <span class="material-icons-round absolute right-3 top-2.5 pointer-events-none text-gray-500">expand_more</span>
+                        </div>
+                    </div>
+
+                    <button id="replayBtn" class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-medium transition flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
+                        <span class="material-icons-round text-lg">replay</span> Replay Animation
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center: Preview Area -->
+            <section class="lg:col-span-5 flex flex-col">
+                <div class="glass-panel rounded-2xl p-1 flex items-center justify-between px-4 py-2 mb-4">
+                     <span class="text-sm font-medium text-gray-500">Preview Canvas</span>
+                     <div class="flex gap-1.5">
+                         <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                         <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                         <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                     </div>
+                </div>
+                
+                <div class="flex-grow min-h-[300px] bg-grid rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 relative flex items-center justify-center overflow-hidden group">
+                    
+                    <!-- The Animated Object -->
+                    <div id="previewObject" class="w-32 h-32 bg-gradient-to-br from-brand-500 to-purple-600 rounded-2xl shadow-2xl shadow-brand-500/30 flex items-center justify-center relative z-10">
+                        <span class="material-icons-round text-white text-5xl">code</span>
+                    </div>
+
+                    <!-- Decorative background elements -->
+                    <div class="absolute inset-0 pointer-events-none opacity-30 flex items-center justify-center">
+                        <div class="w-64 h-64 rounded-full border border-gray-300 dark:border-gray-700 absolute"></div>
+                        <div class="w-96 h-96 rounded-full border border-gray-200 dark:border-gray-800 absolute"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Code Output -->
+            <aside class="lg:col-span-4 flex flex-col h-full">
+                <div class="glass-panel rounded-2xl flex flex-col h-full overflow-hidden shadow-sm">
+                    <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/50">
+                        <h3 class="text-sm font-bold flex items-center gap-2">
+                            <span class="material-icons-round text-brand-500 text-sm">css</span> Generated CSS
+                        </h3>
+                        <button id="copyBtn" class="text-xs flex items-center gap-1 bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 px-2.5 py-1 rounded-md transition shadow-sm">
+                            <span class="material-icons-round text-sm">content_copy</span> <span id="copyText">Copy</span>
+                        </button>
+                    </div>
+                    <div class="relative flex-grow bg-[#1e1e1e] dark:bg-[#0f172a] p-4 overflow-auto font-mono text-sm leading-relaxed group">
+                        <pre id="codeOutput" class="text-gray-300"></pre>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer / Author Info -->
+    <footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <!-- Author Details -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-500 to-purple-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        DB
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg leading-none mb-1">Dippan Bhusal</h3>
+                        <a href="https://DippanBhusal.tech" target="_blank" class="text-sm text-brand-500 hover:underline">DippanBhusal.tech</a>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                    <a href="https://github.com/KDippan" target="_blank" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition group" title="GitHub">
+                        <span class="material-icons-round text-gray-600 dark:text-gray-400 group-hover:text-brand-500">code</span>
+                    </a>
+                    <a href="https://instagram.com/dippan.bhusal" target="_blank" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition group" title="Instagram">
+                        <span class="material-icons-round text-gray-600 dark:text-gray-400 group-hover:text-pink-500">photo_camera</span>
+                    </a>
+                    <a href="mailto:Dippan.connect@gmail.com" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition group" title="Email">
+                        <span class="material-icons-round text-gray-600 dark:text-gray-400 group-hover:text-blue-500">mail</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-xs text-gray-400 dark:text-gray-600">
+                &copy; 2025 Animation Generator. Built with Tailwind & Love.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Style Tag for Dynamic Animations -->
+    <style id="dynamicStyles"></style>
+
+    <!-- Application Logic -->
+    <script>
+        // --- Data: Animation Definitions ---
+        const animations = {
+            'fade-in': {
+                name: 'Fade In',
+                icon: 'opacity',
+                keyframes: `
+  0% { opacity: 0; }
+  100% { opacity: 1; }`
+            },
+            'slide-up': {
+                name: 'Slide Up',
+                icon: 'arrow_upward',
+                keyframes: `
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }`
+            },
+            'scale-in': {
+                name: 'Scale In',
+                icon: 'zoom_in',
+                keyframes: `
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }`
+            },
+            'spin': {
+                name: 'Spin',
+                icon: 'refresh',
+                keyframes: `
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }`
+            },
+            'bounce': {
+                name: 'Bounce',
+                icon: 'sports_basketball',
+                keyframes: `
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}`
+            },
+            'wiggle': {
+                name: 'Wiggle',
+                icon: 'vibration',
+                keyframes: `
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }`
+            },
+            'pulse-glow': {
+                name: 'Pulse Glow',
+                icon: 'highlight',
+                keyframes: `
+  0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(14, 165, 233, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }`
+            },
+            'flip': {
+                name: 'Flip 3D',
+                icon: 'flip',
+                keyframes: `
+  0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+  40% { transform: perspective(400px) rotateY(-20deg); }
+  60% { transform: perspective(400px) rotateY(10deg); opacity: 1; }
+  80% { transform: perspective(400px) rotateY(-5deg); }
+  100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }`
+            }
+        };
+
+        // --- State ---
+        let state = {
+            currentAnim: 'fade-in',
+            duration: 1.0,
+            easing: 'ease'
+        };
+
+        // --- DOM Elements ---
+        const previewObj = document.getElementById('previewObject');
+        const codeOutput = document.getElementById('codeOutput');
+        const dynamicStyleTag = document.getElementById('dynamicStyles');
+        const durationInput = document.getElementById('durationInput');
+        const durationValue = document.getElementById('durationValue');
+        const easingInput = document.getElementById('easingInput');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const animationList = document.getElementById('animationList');
+
+        // --- Initialization ---
+        function init() {
+            renderAnimationList();
+            setupListeners();
+            checkTheme();
+            updateUI();
+        }
+
+        // --- UI Logic ---
+        function renderAnimationList() {
+            animationList.innerHTML = '';
+            Object.keys(animations).forEach(key => {
+                const anim = animations[key];
+                const btn = document.createElement('button');
+                btn.className = `p-3 rounded-xl border transition text-left flex flex-col items-center justify-center gap-2 hover:shadow-md ${
+                    state.currentAnim === key 
+                    ? 'bg-brand-50 border-brand-500 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400' 
+                    : 'bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 hover:border-brand-300'
+                }`;
+                btn.innerHTML = `
+                    <span class="material-icons-round text-2xl">${anim.icon}</span>
+                    <span class="text-xs font-medium">${anim.name}</span>
+                `;
+                btn.onclick = () => {
+                    state.currentAnim = key;
+                    renderAnimationList(); // Re-render to update active state
+                    updateUI();
+                    triggerReplay();
+                };
+                animationList.appendChild(btn);
+            });
+        }
+
+        function updateUI() {
+            // Update Styles
+            const keyframes = animations[state.currentAnim].keyframes;
+            const css = `
+@keyframes ${state.currentAnim} {${keyframes}
+}
+
+.animate-${state.currentAnim} {
+  animation-name: ${state.currentAnim};
+  animation-duration: ${state.duration}s;
+  animation-timing-function: ${state.easing};
+  animation-fill-mode: both;
+  ${state.currentAnim === 'spin' || state.currentAnim === 'wiggle' || state.currentAnim === 'pulse-glow' ? 'animation-iteration-count: infinite;' : ''}
+}`;
+            
+            // Inject CSS for Preview
+            dynamicStyleTag.innerHTML = css;
+            
+            // Apply class to object
+            previewObj.className = ''; // Reset
+            void previewObj.offsetWidth; // Trigger reflow
+            previewObj.className = `w-32 h-32 bg-gradient-to-br from-brand-500 to-purple-600 rounded-2xl shadow-2xl shadow-brand-500/30 flex items-center justify-center relative z-10 animate-${state.currentAnim}`;
+
+            // Update Code Display (Syntax Highlighting HTML generation)
+            codeOutput.innerHTML = formatCode(css);
+        }
+
+        function formatCode(css) {
+            // Simple formatter to wrap tokens in spans
+            let html = css.trim();
+            // Highlight Keywords
+            html = html.replace(/(@keyframes)/g, '<span class="token-selector">$1</span>');
+            html = html.replace(/([a-zA-Z0-9-]+)(?=:)/g, '<span class="token-property">$1</span>');
+            html = html.replace(/(:\s*)([^;]+)/g, '$1<span class="token-value">$2</span>');
+            html = html.replace(/({|})/g, '<span class="token-brace">$1</span>');
+            return html;
+        }
+
+        function triggerReplay() {
+            const oldClass = previewObj.className;
+            previewObj.className = '';
+            void previewObj.offsetWidth; // Force Reflow
+            previewObj.className = oldClass;
+        }
+
+        // --- Event Listeners ---
+        function setupListeners() {
+            durationInput.addEventListener('input', (e) => {
+                state.duration = e.target.value;
+                durationValue.textContent = `${state.duration}s`;
+                updateUI();
+            });
+
+            easingInput.addEventListener('change', (e) => {
+                state.easing = e.target.value;
+                updateUI();
+                triggerReplay();
+            });
+
+            document.getElementById('replayBtn').addEventListener('click', triggerReplay);
+
+            document.getElementById('copyBtn').addEventListener('click', () => {
+                const rawCSS = codeOutput.innerText;
+                // Clipboard API workaround for iframe context
+                const textArea = document.createElement("textarea");
+                textArea.value = rawCSS;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy"); // Fallback for iframe
+                document.body.removeChild(textArea);
+                
+                const btnText = document.getElementById('copyText');
+                const originalText = btnText.innerText;
+                btnText.innerText = 'Copied!';
+                setTimeout(() => btnText.innerText = originalText, 2000);
+            });
+
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // --- Theme Logic ---
+        function checkTheme() {
+            // Check local storage or system preference
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.textContent = 'dark_mode';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.textContent = 'light_mode';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = 'light_mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = 'dark_mode';
+            }
+        }
+
+        // Start
+        init();
+
+    </script>
+</body>
+</html>
+
