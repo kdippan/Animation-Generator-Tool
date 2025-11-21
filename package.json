@@ -1,0 +1,25 @@
+{
+  "name": "animgen-css-generator",
+  "version": "1.0.0",
+  "description": "A production-ready developer tool to generate, preview, and copy aesthetic CSS @keyframes animations.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o"
+  },
+  "keywords": [
+    "css",
+    "animation",
+    "generator",
+    "tailwind",
+    "tool"
+  ],
+  "author": "Dippan Bhusal <Dippan.connect@gmail.com> (https://DippanBhusal.tech)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDippan/AnimGen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KDippan/AnimGen/issues"
+  }
+}
